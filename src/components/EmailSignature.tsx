@@ -54,11 +54,6 @@ const EmailSignature = () => {
           </td>
         </tr>
         <tr>
-          <td style="font-size: 16px; font-weight: 600; color: #6BAE47; padding-bottom: 8px;">
-            Giant General Services Group
-          </td>
-        </tr>
-        <tr>
           <td style="padding-bottom: 4px;">
             <span style="color: #7f8c8d; font-size: 12px;">📧</span>
             <a href="mailto:${signatureData.email}" style="color: #2c3e50; text-decoration: none; margin-left: 8px; font-size: 13px;">
@@ -257,9 +252,6 @@ const EmailSignature = () => {
                       </h3>
                       <p className="text-sm font-medium text-accent">
                         {signatureData.title}
-                      </p>
-                      <p className="text-base font-semibold text-accent mt-2">
-                        Giant General Services Group
                       </p>
                     </div>
                     
