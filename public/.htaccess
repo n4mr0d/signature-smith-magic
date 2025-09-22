@@ -1,21 +1,25 @@
-# Apache .htaccess for SPA routing and correct MIME types
 RewriteEngine On
+RewriteBase /my-app/
 
-# Handle client-side routing
-RewriteBase /
-RewriteRule ^index\.html$ - [L]
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule . /index.html [L]
+# ✅ Do not rewrite static assets
+RewriteCond %{REQUEST_URI} ^/my-app/assets/ - [L]
 
-# Set correct MIME types
+# ✅ Don’t rewrite existing files or directories
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# ✅ Fallback: everything else goes to index.html
+RewriteRule . /my-app/index.html [L]
+
+# --- MIME types ---
 AddType application/javascript .js
 AddType text/css .css
 AddType image/png .png
 AddType image/jpeg .jpg
 AddType image/svg+xml .svg
 
-# Enable compression
+# --- Compression ---
 <IfModule mod_deflate.c>
     AddOutputFilterByType DEFLATE text/plain
     AddOutputFilterByType DEFLATE text/html
